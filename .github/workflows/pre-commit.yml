@@ -1,0 +1,23 @@
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python3 -m venv venv
+      - run: source venv/bin/activate
+      - uses: snok/install-poetry@v1.2
+      - run: poetry install --no-interaction --verbose
+      - run: poetry run pre-commit run --all-files
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10"]
+
+name: pre-commit
+
+on:
+  pull_request:
+  push:
+    branches: [main]

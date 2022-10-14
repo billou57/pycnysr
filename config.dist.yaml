@@ -1,0 +1,27 @@
+my-repository:
+  destinations: [
+    "my-host:~/my-repository/"
+  ]
+  event_handler:
+    excludes: [
+      ".*tmp.*"
+    ]
+    includes: [
+      ".*/api/.*",
+      ".*/conf/.*",
+    ]
+  notify: true
+  rsync:
+    filters: [
+      "- ***/*.pyc",
+      "- ***/__pycache__/",
+      "+ api/***",
+      "+ conf/***",
+      "- *"
+    ]
+    options: [
+      '--archive',
+      '--delete',
+      '--rsh=ssh'
+    ]
+  source: ~/Sites/my-repository/

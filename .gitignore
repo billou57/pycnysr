@@ -1,0 +1,12 @@
+.DS_Store
+.coverage
+.mypy_cache/
+.pytest_cache/
+.tox/
+__pycache__
+build/
+config.yaml
+dist/
+poetry.lock
+pycnysr.egg-info/
+venv/

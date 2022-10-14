@@ -1,0 +1,1 @@
+from .pycnysr import main

@@ -1,0 +1,158 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: '^(.git|__pycache__)$'
+fail_fast: true
+repos:
+  - hooks:
+      - entry: check-ast
+        id: check-ast
+        language: python
+        name: check-ast
+        types: ['python']
+      - entry: check-builtin-literals
+        id: check-builtin-literals
+        language: python
+        name: check-builtin-literals
+        types: ['python']
+      - entry: check-case-conflict
+        id: check-case-conflict
+        language: python
+        name: check-case-conflict
+      - entry: check-docstring-first
+        id: check-docstring-first
+        language: python
+        name: check-docstring-first
+        types: ['python']
+      - entry: check-merge-conflict
+        id: check-merge-conflict
+        language: python
+        name: check-merge-conflict
+      - entry: check-shebang-scripts-are-executable
+        id: check-shebang-scripts-are-executable
+        language: python
+        name: check-shebang-scripts-are-executable
+      - entry: check-vcs-permalinks
+        id: check-vcs-permalinks
+        language: python
+        name: check-vcs-permalinks
+      - entry: check-yaml
+        id: check-yaml
+        language: python
+        name: check-yaml
+        types: ['yaml']
+      - entry: debug-statement-hook
+        id: debug-statement-hook
+        language: python
+        name: debug-statement-hook
+        types: ['python']
+      - entry: double-quote-string-fixer
+        id: double-quote-string-fixer
+        language: python
+        name: double-quote-string-fixer
+        types: ['python']
+      - entry: end-of-file-fixer
+        id: end-of-file-fixer
+        language: python
+        name: end-of-file-fixer
+      - entry: file-contents-sorter
+        files: ^(.gitignore)$
+        id: file-contents-sorter
+        language: python
+        name: file-contents-sorter
+      - entry: fix-byte-order-marker
+        id: fix-byte-order-marker
+        language: python
+        name: fix-byte-order-marker
+      - args: ['--remove']
+        entry: fix-encoding-pragma
+        id: fix-encoding-pragma
+        language: python
+        name: fix-encoding-pragma
+      - entry: mixed-line-ending
+        id: mixed-line-ending
+        language: python
+        name: mixed-line-ending
+      - args: ['--pytest-test-first']
+        entry: name-tests-test
+        files: ^tests\/
+        id: name-tests-test
+        language: python
+        name: name-tests-test
+        types: ['python']
+      - entry: sort-simple-yaml
+        files: ^.*\.yaml$
+        id: sort-simple-yaml
+        language: python
+        name: sort-simple-yaml
+      - entry: trailing-whitespace-fixer
+        id: trailing-whitespace-fixer
+        language: python
+        name: trailing-whitespace-fixer
+      - args: [
+        '--in-place'
+      ]
+        entry: toml-sort
+        exclude: 'poetry.lock'
+        id: toml-sort
+        language: python
+        name: toml-sort
+        types: ['toml']
+      - args: [
+        '--in-place',
+        '--remove-all-unused-imports',
+        '--remove-unused-variable',
+        '--remove-duplicate-keys',
+        '--recursive',
+        '--ignore-init-module-imports'
+      ]
+        entry: autoflake
+        id: autoflake
+        language: python
+        name: autoflake
+        types: ['python']
+      - args: ['--config=pyproject.toml']
+        entry: black
+        id: black
+        language: python
+        name: black
+        types: ['python']
+      - args: ['--settings-path=pyproject.toml']
+        entry: isort
+        id: isort
+        language: python
+        name: isort
+        types: ['python']
+      - args: ['-c=.yamllint.yaml']
+        entry: yamllint
+        id: yamllint
+        language: python
+        name: yamllint
+        types: ['yaml']
+      - entry: flake8
+        id: flake8
+        language: python
+        name: flake8
+        types: ['python']
+      - entry: flake8-markdown
+        id: flake8-markdown
+        language: python
+        name: flake8-markdown
+        types: ['markdown']
+      - args: ['--config-file=pyproject.toml']
+        entry: mypy .
+        id: mypy
+        language: python
+        name: mypy
+        pass_filenames: false
+      - entry: pytest -v
+        id: pytest
+        language: python
+        name: pytest
+        pass_filenames: false
+      - entry: pytest --cov=pycnysr/ --cov-fail-under=40 tests/
+        id: coverage
+        language: python
+        name: coverage
+        pass_filenames: false
+    repo: local
