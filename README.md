@@ -6,13 +6,13 @@ A simple directory watcher and syncer
 
 Based on a YAML config file (see the [example configuration file](config.dist.yaml)), this module synchronizes a local directory to one or more local or remote directories, using [rsync](https://rsync.samba.org) as the underlying backend.
 
-it uses two levels of exclusion and inclusion levels in order to avoid useless expensive rsync calls. At a first level, files that don't need to be monitored
-can be excluded. At a second level, only files that need to be rsynced can be configured.
+It uses two levels of exclusion and inclusion in order to avoid useless expensive rsync calls. At a first level, files that don't need to be monitored
+can be excluded at a cheap cost. At a second level, only files that need to be
+really rsynced can be configured and fine tuned.
 
-it was developed on macOS and generate optional notifications.
+It should be able to run on Windows, Linux and macOS and generate optional notifications.
 
 # in practice
-
 
 ```yaml
 my-repository:
@@ -52,7 +52,7 @@ passed to the rsync process.
 
 Then, rsync is called with the [filter rules](https://download.samba.org/pub/rsync/rsync.1) built from the `rsync.filters` list.
 
-let's run the watcher:
+Tet's run the watcher:
 
 ```console
 ❯ pycnysr --config config.yaml
@@ -63,12 +63,12 @@ let's run the watcher:
 2022-10-13 21:03:17 INFO observers all initialized
 ````
 
-on another console, create a file:
+On another console, create a file:
 
 ```console
 touch api/new-file.txt
 ```
-see the file synchronized:
+See the file synchronized:
 
 ```console
 2022-10-13 21:03:23 INFO synchronizing /Users/laurent/Sites/pycnysr/new-file.txt
@@ -76,8 +76,8 @@ see the file synchronized:
 
 # warning
 
-use with care. early development.
+Use with care. early development.
 
 # license
 
-this project is licensed under the terms of the MIT license.
+This project is licensed under the terms of the MIT license.
