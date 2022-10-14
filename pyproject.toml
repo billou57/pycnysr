@@ -63,7 +63,7 @@ ignore_missing_imports = true
 
 [tool.poetry]
 name = "pycnysr"
-version = "0.0.1"
+version = "0.0.2"
 description = "a simple multi directory watcher and syncer"
 authors = ["Laurent Baillet <laurent.baillet@gmail.com>"]
 readme = "README.md"
@@ -72,7 +72,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-keywords = ["synchronization", "rsync", "watcher"]
+keywords = ["files", "synchronization", "rsync", "watcher"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
